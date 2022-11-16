@@ -15,7 +15,7 @@ class Game:
         self.players = players
         self.coin = coin
 
-    def print_the_winner(self, win_option: str) -> str:
+    def print_the_round_winner(self, win_option: str) -> str:
         """Prints the winner and loser of the round"""
 
         winner = None
@@ -42,11 +42,12 @@ class Game:
         print(f'{self.players[0].get_name()}: {self.players[0].get_points()}')
         print(f'{self.players[1].get_name()}: {self.players[1].get_points()}')
 
-        winner = None
+        winning_message = ''
         if self.players[0].get_points() > self.players[1].get_points():
-            winner = self.players[0]
-        else:
-            winner = self.players[1]
+            winning_message = f'The definitive winner is {self.players[0].get_name()}'
+        if self.players[0].get_points() < self.players[1].get_points():
+            winning_message = f'The definitive winner is {self.players[1].get_name()}'
+        if self.players[0].get_points() == self.players[1].get_points():
+            winning_message = 'Match tied! Keep playing c:'
 
-        winning_message = f'The definitive winner is {winner.get_name()}'
         return winning_message

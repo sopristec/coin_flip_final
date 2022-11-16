@@ -12,9 +12,9 @@ def test_game_print_the_winner_of_the_round():
     players_list = [player1, player2]
     coin = Coin()
     game = Game(players_list, coin)
-    winner_message = game.print_the_winner('HEADS')
+    winner_message = game.print_the_round_winner('HEADS')
     assert winner_message == 'Player 1 wins the round'
-    winner_message = game.print_the_winner('TAILS')
+    winner_message = game.print_the_round_winner('TAILS')
     assert winner_message == 'Player 2 wins the round'
 
 def test_game_print_offer_next_round():
@@ -27,7 +27,7 @@ def test_game_print_offer_next_round():
     offer_message = game.print_offer_next_round()
     assert offer_message == 'Press enter when ready for the next round.'
 
-def test_game_print_definitive_winner():
+def test_game_print_definitive_winner_player2_wins():
     """Test that the definitive winner is printed correctly"""
     player1 = Player('Player 1')
     player2 = Player('Player 2')
@@ -38,3 +38,27 @@ def test_game_print_definitive_winner():
     game = Game(players_list, coin)
     winner_message = game.print_definitive_winner_message()
     assert winner_message == 'The definitive winner is Player 2'
+
+def test_game_print_definitive_winner_player1_wins():
+    """Test that the definitive winner is printed correctly"""
+    player1 = Player('Player 1')
+    player2 = Player('Player 2')
+    player1.add_points(3)
+    player2.add_points(2)
+    players_list = [player1, player2]
+    coin = Coin()
+    game = Game(players_list, coin)
+    winner_message = game.print_definitive_winner_message()
+    assert winner_message == 'The definitive winner is Player 1'
+
+def test_game_print_definitive_winner_tie():
+    """Test that the winning message is TIED when the game is tied"""
+    player1 = Player('Player 1')
+    player2 = Player('Player 2')
+    player1.add_points(1)
+    player2.add_points(1)
+    players_list = [player1, player2]
+    coin = Coin()
+    game = Game(players_list, coin)
+    winner_message = game.print_definitive_winner_message()
+    assert winner_message == 'Match tied! Keep playing c:'

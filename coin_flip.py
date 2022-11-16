@@ -55,7 +55,7 @@ def main(default_wait_between_rounds = 3) -> str:
 
         print(f'Result is {win_option} ')
 
-        game.print_the_winner(win_option)
+        game.print_the_round_winner(win_option)
         game.print_offer_next_round()
 
         rounds += 1
