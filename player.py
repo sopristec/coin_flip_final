@@ -16,7 +16,7 @@ class Player:
         """Returns the player selected coin option"""
         return self.selected_coin_option
 
-    def set_coin_option(self, coin_option. str) -> str:
+    def set_coin_option(self, coin_option: str) -> str:
         """Sets the player coin selection"""
         self.selected_coin_option = coin_option
         return self.selected_coin_option

@@ -9,6 +9,9 @@ class Game:
     """Helps determine winners after every round and the definitive winner after 10 rounds"""
 
     def __init__(self, players: List[Player], coin: Coin):
+        """Initializes the game with the players and the coin.
+        ATTENTION. The game class expects a list of exactly 2 players."""
+        # TODO: Add a check to make sure the list has exactly 2 different players
         self.players = players
         self.coin = coin
 
@@ -30,8 +33,9 @@ class Game:
         """Prints the offer to play another round"""
         message = 'Press enter when ready for the next round.'
         print(message)
+        return message
 
-    def print_definitive_winner(self) -> str:
+    def print_definitive_winner_message(self) -> str:
         """Prints the definitive winner of the game"""
 
         print('FINAL SCORE')
